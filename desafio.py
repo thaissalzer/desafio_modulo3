@@ -70,6 +70,9 @@ dfPercentualMulheres = pd.DataFrame({
     'Percentual de Mulheres (%)': percentual_mulheres.values
 })
 
+# Ordenando o dataframe pelo percentual de mulheres em ordem crescente
+dfPercentualMulheres = dfPercentualMulheres.sort_values(by='Percentual de Mulheres (%)', ascending=True)
+
 # Exibindo o gráfico de barras com o percentual de mulheres por estado
 st.subheader('Percentual de Mulheres por Estado')
 st.bar_chart(dfPercentualMulheres, x='Estado', y='Percentual de Mulheres (%)', x_label='Estados', y_label='Percentual (%)')

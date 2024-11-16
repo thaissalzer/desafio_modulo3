@@ -45,13 +45,13 @@ total_deputados= len(df)
 #total de homens
 totalHomens = dfHomens['id'].count()
 st.metric('Total de Homens', totalHomens)
-st.write(f' {(totalHomens/total_deputados)*100}% dos deputados são homens')
+st.write(f' {(totalHomens/total_deputados)*100:.2f}% dos deputados são homens')
 
 
 #total de mulheres
 totalMulheres = dfMulheres['id'].count()
 st.metric('Total de Mulheres', totalMulheres)
-st.write(f' {(totalMulheres/total_deputados)*100}% dos deputados são mulheres')
+st.write(f' {(totalMulheres/total_deputados)*100:.2f}% dos deputados são mulheres')
 
 
 st.write('Total de deputadas do sexo ' + opcao)

@@ -59,8 +59,6 @@ st.bar_chart(dfEstados, x = 'siglaUf', y = 'quantidade', x_label='Siglas dos est
 
 st.dataframe(dfFiltrado)
 
-import plotly.express as px
-
 # Calculando a porcentagem de mulheres por estado
 total_estado = df['siglaUf'].value_counts()
 mulheres_por_estado = dfMulheres['siglaUf'].value_counts()
@@ -72,18 +70,6 @@ dfPercentualMulheres = pd.DataFrame({
     'Percentual de Mulheres (%)': percentual_mulheres.values
 })
 
-# Criando o gráfico com plotly
-fig = px.bar(
-    dfPercentualMulheres,
-    x='Estado',
-    y='Percentual de Mulheres (%)',
-    text='Percentual de Mulheres (%)',  # Adiciona os rótulos de texto
-    labels={'Estado': 'Estados', 'Percentual de Mulheres (%)': 'Percentual (%)'},
-    title='Percentual de Mulheres por Estado'
-)
-
-# Ajustando o formato do texto para duas casas decimais
-fig.update_traces(texttemplate='%{text:.2f}%', textposition='outside')
-
-# Exibindo o gráfico no Streamlit
-st.plotly_chart(fig)
+# Exibindo o gráfico de barras com o percentual de mulheres por estado
+st.subheader('Percentual de Mulheres por Estado')
+st.bar_chart(dfPercentualMulheres, x='Estado', y='Percentual de Mulheres (%)', x_label='Estados', y_label='Percentual (%)')

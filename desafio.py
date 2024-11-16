@@ -71,8 +71,22 @@ dfPercentualMulheres = pd.DataFrame({
 })
 
 # Ordenando o dataframe pelo percentual de mulheres em ordem crescente
+
+import matplotlib.pyplot as plt
+
+
+# Ordenando o dataframe pelo percentual de mulheres
 dfPercentualMulheres = dfPercentualMulheres.sort_values(by='Percentual de Mulheres (%)', ascending=True)
 
-# Exibindo o gráfico de barras com o percentual de mulheres por estado
-st.subheader('Percentual de Mulheres por Estado')
-st.bar_chart(dfPercentualMulheres, x='Estado', y='Percentual de Mulheres (%)', x_label='Estados', y_label='Percentual (%)')
+# Criando o gráfico com Matplotlib
+fig, ax = plt.subplots(figsize=(10, 6))  # Cria uma figura e eixos
+ax.bar(dfPercentualMulheres['Estado'], dfPercentualMulheres['Percentual de Mulheres (%)'], color='skyblue')
+
+# Configurando rótulos e título
+ax.set_xlabel('Estados', fontsize=12)
+ax.set_ylabel('Percentual de Mulheres (%)', fontsize=12)
+ax.set_title('Percentual de Mulheres por Estado (Ordenado)', fontsize=14)
+plt.xticks(rotation=45)  # Rotaciona os rótulos dos estados para melhor visualização
+
+# Exibindo o gráfico no Streamlit
+st.pyplot(fig)

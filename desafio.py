@@ -58,3 +58,19 @@ st.write('Total de deputadas do sexo ' + opcao)
 st.bar_chart(dfEstados, x = 'siglaUf', y = 'quantidade', x_label='Siglas dos estados', y_label='Quantidade de deputados')
 
 st.dataframe(dfFiltrado)
+
+
+# Calculando a porcentagem de mulheres por estado
+total_estado = df['siglaUf'].value_counts()
+mulheres_por_estado = dfMulheres['siglaUf'].value_counts()
+percentual_mulheres = (mulheres_por_estado / total_estado * 100).dropna()
+
+# Criando um dataframe para o gráfico
+dfPercentualMulheres = pd.DataFrame({
+    'Estado': percentual_mulheres.index,
+    'Percentual de Mulheres (%)': percentual_mulheres.values
+})
+
+# Exibindo o gráfico de barras com o percentual de mulheres por estado
+st.subheader('Percentual de Mulheres por Estado')
+st.bar_chart(dfPercentualMulheres, x='Estado', y='Percentual de Mulheres (%)', x_label='Estados', y_label='Percentual (%)')
